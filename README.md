@@ -1,5 +1,6 @@
 # ISSP-Web-Crawler
-
+ISSP-Web-Craler is to collect data about internet security events about companines in China, analysis the influence on those compaines.
+## Project Structure
 ```bash
 .
 ├── LICENSE
@@ -29,3 +30,7 @@
     ├── parse.py
     └── request.py
 ```
++ `baidu`
++ `toutiao`
++ `dataset(gitignore)`
++ `analysis`
