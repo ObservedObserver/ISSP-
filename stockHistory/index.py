@@ -22,14 +22,15 @@ def main():
             url = getStockURL(row['证券代码'].split('.')[0])
             res = getHtml(url)
             csvData = parseHtml(res)
+            sliceData = [sliceRow[:9] for sliceRow in csvData[1:]]
             # fieldnames = csvData[0]
-            for record in csvData[1:]:
+            for record in sliceData:
               record.append(row['证券简称'])
             if i == 0:
               # csvData[0].append('incName')
-              fieldnames = copy.deepcopy(csvData[0])
+              fieldnames = copy.deepcopy(csvData[0][:9])
               fieldnames.append('company_name')
-            result[0:0] = csvData[1:]
+            result[0:0] = sliceData
           except:
             print('err')
             continue
