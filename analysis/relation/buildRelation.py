@@ -6,7 +6,7 @@ def loadData():
   # 关联字段：company_name（公司简称）
   company_event = {}
   company_stock = {}
-  with open('../../dataset/bj_safe_baiduall.json', 'r') as f:
+  with open('../../dataset/manualProcess/clean_data_wei.json', 'r') as f:
     data = json.loads(f.read())
     for record in data:
       if company_event.get(record['company_name']) == None:

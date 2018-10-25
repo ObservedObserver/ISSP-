@@ -55,11 +55,14 @@ function getRateList (delta) {
     }
     let rate = cosXY(vecEvent, vecStock.slice(delta))
     if (!isNaN(rate)) {
-      avgRate += Math.abs(rate)
-      num ++
+      rateList.push({
+        'company_name': company,
+        rate,
+        delta
+      })
     }
   }
-  return avgRate / num
+  return rateList
 }
 
 let data = JSON.parse(fs.readFileSync('../../dataset/relation/stock&event.json').toString())
@@ -69,11 +72,8 @@ let {
 } = data
 let ans = []
 for (let i = 0; i <= 100; i++) {
-  let val = getRateList(i)
-  console.log(i, val)
-  ans.push({
-    rating: val,
-    delta: i
-  })
+  let rateList = getRateList(i)
+  console.log(i + '%')
+  ans.push(rateList)
 }
-fs.writeFileSync('../../dataset/relation/ratings_time_lag_less100.json', JSON.stringify(ans))
+fs.writeFileSync('../../dataset/relation/ratings_time_lag_less100_wei_list.json', JSON.stringify(ans))

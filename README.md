@@ -1,36 +1,19 @@
 # ISSP-Web-Crawler
-ISSP-Web-Craler is to collect data about internet security events about companines in China, analysis the influence on those compaines.
+(BJTU-ISSP-2018课程大作业) 研究国内信息安全事件对不同公司的影响。本项目包含数据爬取与分析两部分主要功能。
 ## Project Structure
-```bash
-.
-├── LICENSE
-├── README.md
-├── analysis
-│   └── filter.py
-├── baidu
-│   ├── __pycache__
-│   │   ├── parse.cpython-36.pyc
-│   │   ├── request.cpython-36.pyc
-│   │   └── utils.cpython-36.pyc
-│   ├── index.py
-│   ├── parse.py
-│   ├── request.py
-│   └── utils.py
-├── dataset (ignore)
-│   ├── beijing_inc.csv
-│   ├── bi_safe.json
-│   ├── bj_safe_baidu.json
-│   ├── bj_safe_baidu2017.json
-│   └── bj_safe_baidu_0.json
-└── toutiao
-    ├── __pycache__
-    │   ├── parse.cpython-36.pyc
-    │   └── request.cpython-36.pyc
-    ├── index.py
-    ├── parse.py
-    └── request.py
-```
-+ `baidu`
-+ `toutiao`
-+ `dataset(gitignore)`
-+ `analysis`
++ analysis
++ baidu
++ dataset
++ stockHistory
++ toutiao
+
+## 流程说明
+
+### 获取信息安全攻击数据
++ `baidu/index.py`
++ `toutiao/index.py`
+
+### 数据关系构建
+1. 数据获取: `/dataset/bj_safe_baiduall.json`获取时间数据， `/dataset/stock.csv`获取股市数据。
+2. 数据格式化: `/analysis/relation/buildRelation.py`既可以进行相关度计算也可以格式化数据
+3. 计算权值: 由于python的运行效率较低，我们对于分析算法使用node运行`faster_buildRelation.js`来完成。
